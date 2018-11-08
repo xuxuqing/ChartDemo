@@ -23,8 +23,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.CompositeIndexBean;
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.IncomeBean;
+import demo.api.tps550.telpo.com.mywebviewapplication.bean.ChartBean;
 import demo.api.tps550.telpo.com.mywebviewapplication.utils.DateUtil;
 import demo.api.tps550.telpo.com.mywebviewapplication.wegith.LineChartMarkView;
 
@@ -107,7 +106,7 @@ public class LineChartManager {
         //是否绘制在图表里面
         legend.setDrawInside(false);
         //是否显示
-        legend.setEnabled(false);
+        legend.setEnabled(true);
     }
 
     /**
@@ -328,15 +327,15 @@ public class LineChartManager {
      * @param name     曲线名称
      * @param color    曲线颜色
      */
-    public void showLineChart(final List<IncomeBean> dataList, String name, int color) {
+    public void showLineChart(final List<ChartBean> dataList, String name, int color) {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
-            IncomeBean data = dataList.get(i);
+            ChartBean data = dataList.get(i);
             /**
              * 在此可查看 Entry构造方法，可发现 可传入数值 Entry(float x, float y)
              * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
              */
-            Entry entry = new Entry(i, (float) data.getValue());
+            Entry entry = new Entry(i, (float) data.getNum());
             entries.add(entry);
         }
 
@@ -351,7 +350,7 @@ public class LineChartManager {
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                String tradeDate = dataList.get((int) value % dataList.size()).getTradeDate();
+                String tradeDate = dataList.get((int) value % dataList.size()).getDate();
                 return DateUtil.formatDateToMD(tradeDate);
             }
         });
@@ -390,11 +389,11 @@ public class LineChartManager {
     /**
      * 添加曲线
      */
-    public void addLine(List<CompositeIndexBean> dataList, String name, int color) {
+    public void addLine(List<ChartBean> dataList, String name, int color) {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
-            CompositeIndexBean data = dataList.get(i);
-            Entry entry = new Entry(i, (float) data.getRate());
+            ChartBean data = dataList.get(i);
+            Entry entry = new Entry(i, data.getNum());
             entries.add(entry);
         }
         // 每一个LineDataSet代表一条线
@@ -407,7 +406,7 @@ public class LineChartManager {
     /**
      * 重置某条曲线 position 从 0 开始
      */
-    public void resetLine(int position, List<CompositeIndexBean> dataList, String name, int color) {
+    public void resetLine(int position, List<ChartBean> dataList, String name, int color) {
         LineData lineData = lineChart.getData();
         List<ILineDataSet> list = lineData.getDataSets();
         if (list.size() <= position) {
@@ -416,8 +415,8 @@ public class LineChartManager {
 
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
-            CompositeIndexBean data = dataList.get(i);
-            Entry entry = new Entry(i, (float) data.getRate());
+            ChartBean data = dataList.get(i);
+            Entry entry = new Entry(i, (float) data.getNum());
             entries.add(entry);
         }
 

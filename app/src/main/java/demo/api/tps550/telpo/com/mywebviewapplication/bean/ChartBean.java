@@ -4,22 +4,22 @@ package demo.api.tps550.telpo.com.mywebviewapplication.bean;
  * Created by xx on 2018/10/19.
  */
 
-public class PieChartBean {
+public class ChartBean {
 
-    private int money = 0;
+    private float num = 0;
     private String date = "";
 
-    public PieChartBean(int money, String date) {
-        this.money = money;
+    public ChartBean(float money, String date) {
+        this.num = money;
         this.date = date;
     }
 
-    public int getMoney() {
-        return money;
+    public float getNum() {
+        return num;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setNum(float num) {
+        this.num = num;
     }
 
     public String getDate() {

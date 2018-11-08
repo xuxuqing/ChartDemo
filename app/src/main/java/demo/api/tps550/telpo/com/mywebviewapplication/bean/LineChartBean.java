@@ -58,40 +58,40 @@ public class LineChartBean {
 
         public class ResultBean {
 
-            private List<CompositeIndexBean> compositeIndexGEM;
-            private List<IncomeBean> clientAccumulativeRate;
-            private List<CompositeIndexBean> compositeIndexShanghai;
-            private List<CompositeIndexBean> compositeIndexShenzhen;
+            private List<ChartBean> compositeIndexGEM;
+            private List<ChartBean> clientAccumulativeRate;
+            private List<ChartBean> compositeIndexShanghai;
+            private List<ChartBean> compositeIndexShenzhen;
 
-            public List<CompositeIndexBean> getCompositeIndexGEM() {
+            public List<ChartBean> getCompositeIndexGEM() {
                 return compositeIndexGEM;
             }
 
-            public void setCompositeIndexGEM(List<CompositeIndexBean> compositeIndexGEM) {
+            public void setCompositeIndexGEM(List<ChartBean> compositeIndexGEM) {
                 this.compositeIndexGEM = compositeIndexGEM;
             }
 
-            public List<IncomeBean> getClientAccumulativeRate() {
+            public List<ChartBean> getClientAccumulativeRate() {
                 return clientAccumulativeRate;
             }
 
-            public void setClientAccumulativeRate(List<IncomeBean> clientAccumulativeRate) {
+            public void setClientAccumulativeRate(List<ChartBean> clientAccumulativeRate) {
                 this.clientAccumulativeRate = clientAccumulativeRate;
             }
 
-            public List<CompositeIndexBean> getCompositeIndexShanghai() {
+            public List<ChartBean> getCompositeIndexShanghai() {
                 return compositeIndexShanghai;
             }
 
-            public void setCompositeIndexShanghai(List<CompositeIndexBean> compositeIndexShanghai) {
+            public void setCompositeIndexShanghai(List<ChartBean> compositeIndexShanghai) {
                 this.compositeIndexShanghai = compositeIndexShanghai;
             }
 
-            public List<CompositeIndexBean> getCompositeIndexShenzhen() {
+            public List<ChartBean> getCompositeIndexShenzhen() {
                 return compositeIndexShenzhen;
             }
 
-            public void setCompositeIndexShenzhen(List<CompositeIndexBean> compositeIndexShenzhen) {
+            public void setCompositeIndexShenzhen(List<ChartBean> compositeIndexShenzhen) {
                 this.compositeIndexShenzhen = compositeIndexShenzhen;
             }
         }

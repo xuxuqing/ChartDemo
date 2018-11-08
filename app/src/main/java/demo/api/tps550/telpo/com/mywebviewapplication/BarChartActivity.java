@@ -15,11 +15,8 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.CompositeIndexBean;
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.IncomeBean;
+import demo.api.tps550.telpo.com.mywebviewapplication.bean.ChartBean;
 import demo.api.tps550.telpo.com.mywebviewapplication.bean.LineChartBean;
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.PieChartBean;
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.VtDateValueBean;
 import demo.api.tps550.telpo.com.mywebviewapplication.utils.LocalJsonAnalyzeUtil;
 import demo.api.tps550.telpo.com.mywebviewapplication.utils.MPChartUtils;
 import demo.api.tps550.telpo.com.mywebviewapplication.wegith.MyPieChart;
@@ -33,7 +30,7 @@ public class BarChartActivity extends AppCompatActivity {
     /**
      * barChart数据
      */
-    private List<VtDateValueBean> dateValueList = new ArrayList<>();
+    private List<ChartBean> dateValueList = new ArrayList<>();
 
 
     private LineChartManager lineChartManager1;
@@ -41,10 +38,10 @@ public class BarChartActivity extends AppCompatActivity {
      * linechart数据
      */
     private LineChartBean lineChartBean;
-    private List<IncomeBean> incomeBeanList;//个人收益
-    private List<CompositeIndexBean> shanghai;//沪市指数
-    private List<CompositeIndexBean> shenzheng;//深市指数
-    private List<CompositeIndexBean> GEM;//创业板指数
+    private List<ChartBean> incomeBeanList;//个人收益
+    private List<ChartBean> shanghai;//沪市指数
+    private List<ChartBean> shenzheng;//深市指数
+    private List<ChartBean> GEM;//创业板指数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +68,12 @@ public class BarChartActivity extends AppCompatActivity {
      * 设置饼状图数据
      */
     private void setPieChartData() {
-        ArrayList<PieChartBean> pieChartList = new ArrayList<>();
-        pieChartList.add(new PieChartBean(60, "啊啊啊"));
-        pieChartList.add(new PieChartBean(20, "阿斯达"));
-        pieChartList.add(new PieChartBean(10, "光伏发电"));
-        pieChartList.add(new PieChartBean(4, "第三方刚的官方"));
-        pieChartList.add(new PieChartBean(6, "元图腾与"));
+        ArrayList<ChartBean> pieChartList = new ArrayList<>();
+        pieChartList.add(new ChartBean(60, "啊啊啊"));
+        pieChartList.add(new ChartBean(20, "阿斯达"));
+        pieChartList.add(new ChartBean(10, "光伏发电"));
+        pieChartList.add(new ChartBean(4, "第三方刚的官方"));
+        pieChartList.add(new ChartBean(6, "元图腾与"));
 
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.parseColor("#ff0000"));
@@ -91,13 +88,13 @@ public class BarChartActivity extends AppCompatActivity {
      * 设置柱状图数据
      */
     private void setBarChartData() {
-        dateValueList.add(new VtDateValueBean(2,"10-01"));
-        dateValueList.add(new VtDateValueBean((float) 0.2,"10-02"));
-        dateValueList.add(new VtDateValueBean((float) 0.9,"10-03"));
-        dateValueList.add(new VtDateValueBean((float) 1.9,"10-04"));
-        dateValueList.add(new VtDateValueBean((float) 5.9,"10-05"));
-        dateValueList.add(new VtDateValueBean((float) 2.9,"10-06"));
-        dateValueList.add(new VtDateValueBean(2,"10-01"));
+        dateValueList.add(new ChartBean(2,"10-01"));
+        dateValueList.add(new ChartBean((float) 0.2,"10-02"));
+        dateValueList.add(new ChartBean((float) 0.9,"10-03"));
+        dateValueList.add(new ChartBean((float) 1.9,"10-04"));
+        dateValueList.add(new ChartBean((float) 5.9,"10-05"));
+        dateValueList.add(new ChartBean((float) 2.9,"10-06"));
+        dateValueList.add(new ChartBean(2,"10-01"));
 
         barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override

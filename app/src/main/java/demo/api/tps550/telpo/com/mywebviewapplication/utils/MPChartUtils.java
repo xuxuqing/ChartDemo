@@ -21,8 +21,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.PieChartBean;
-import demo.api.tps550.telpo.com.mywebviewapplication.bean.VtDateValueBean;
+import demo.api.tps550.telpo.com.mywebviewapplication.bean.ChartBean;
 import demo.api.tps550.telpo.com.mywebviewapplication.wegith.MyPieChart;
 
 /**
@@ -36,7 +35,7 @@ public class MPChartUtils {
      * @param barChart
      * @param dateValueList
      */
-    public static void initBarChart(BarChart barChart, final List<VtDateValueBean> dateValueList) {
+    public static void initBarChart(BarChart barChart, final List<ChartBean> dateValueList) {
         /***图表设置***/
         //背景颜色
         barChart.setBackgroundColor(Color.WHITE);
@@ -130,7 +129,7 @@ public class MPChartUtils {
     /**
      * 开始封装数据显示柱状图
      */
-    public static void showBarChart(BarChart barChart, List<VtDateValueBean> dateValueList) {
+    public static void showBarChart(BarChart barChart, List<ChartBean> dateValueList) {
 
         ArrayList<BarEntry> entries = new ArrayList<>();
         for (int i = 0; i < dateValueList.size(); i++) {
@@ -138,7 +137,7 @@ public class MPChartUtils {
              * 此处还可传入Drawable对象 BarEntry(float x, float y, Drawable icon)
              * 即可设置柱状图顶部的 icon展示
              */
-            BarEntry barEntry = new BarEntry(i, dateValueList.get(i).getMoney(),dateValueList.get(i).getDate());
+            BarEntry barEntry = new BarEntry(i, dateValueList.get(i).getNum(),dateValueList.get(i).getDate());
             entries.add(barEntry);
         }
         // 每一个BarDataSet代表一类柱状图
@@ -231,7 +230,7 @@ public class MPChartUtils {
     /**
      * 开始封装数据显示环形饼状图
      */
-    public static void showPieChart(MyPieChart pieChart, List<PieChartBean> dateValueList, ArrayList<Integer> colors) {
+    public static void showPieChart(MyPieChart pieChart, List<ChartBean> dateValueList, ArrayList<Integer> colors) {
         /**
          * valueList将一个饼形图分成三部分，各个区域的百分比的值
          * Entry构造函数中
@@ -241,12 +240,12 @@ public class MPChartUtils {
          */
         ArrayList<PieEntry> valueList = new ArrayList<>();
         int total = 0;
-        for (PieChartBean bean: dateValueList) {
-            total+=bean.getMoney();
+        for (ChartBean bean: dateValueList) {
+            total+=bean.getNum();
         }
-        for (PieChartBean bean: dateValueList) {
-            double div = ArithUtii.div(bean.getMoney(), total)*100;
-            valueList.add(new PieEntry(bean.getMoney(), bean.getDate()+"\n "+div+"%"));
+        for (ChartBean bean: dateValueList) {
+            double div = ArithUtii.div(bean.getNum(), total)*100;
+            valueList.add(new PieEntry(bean.getNum(), bean.getDate()+"\n "+div+"%"));
         }
 
         //显示在比例图上

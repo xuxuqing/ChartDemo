@@ -1,5 +1,5 @@
 # ChartDemo
-三种基本图标demo
+三种基本图表demo
 
 ## Features
 1, 使用 MPChart再次封装，简单使用。</br>

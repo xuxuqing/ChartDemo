@@ -6,3 +6,4 @@
 
 
 ![test.png](https://github.com/xuxuqing/ChartDemo/blob/master/imgs/20181108101803.png)
+![test.png](https://github.com/xuxuqing/ChartDemo/blob/master/imgs/20181108112808.png)

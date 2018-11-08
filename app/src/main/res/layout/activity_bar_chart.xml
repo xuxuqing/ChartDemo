@@ -25,7 +25,7 @@
             <demo.api.tps550.telpo.com.mywebviewapplication.wegith.MyPieChart
                 android:id="@+id/pieChart"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 

@@ -196,22 +196,23 @@ public class MPChartUtils {
         pieChart.setDrawCenterText(false);//饼状图中间可以添加文字
 
         //设置圆盘是否转动，默认转动
-        pieChart.setRotationEnabled(false);
+//        pieChart.setRotationEnabled(false);
         //设置初始旋转角度
-//        pieChart.setRotationAngle(100);
+        pieChart.setRotationAngle(50);
 
 //        //设置比例图
         Legend mLegend = pieChart.getLegend();
-        mLegend.setEnabled(false);
-//        //设置比例图显示在饼图的哪个位置
-//        mLegend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
-////        //设置比例图的形状，默认是方形,可为方形、圆形、线性
-//        mLegend.setForm(Legend.LegendForm.SQUARE);
-//        mLegend.setXEntrySpace(10f);//设置距离饼图的距离，防止与饼图重合
-//        mLegend.setYEntrySpace(0f);
-//        mLegend.setYOffset(2f);
-////        //设置比例块换行...
-//        mLegend.setWordWrapEnabled(true);
+//        mLegend.setEnabled(false);
+        //设置比例图显示在饼图的哪个位置
+        mLegend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+//        //设置比例图的形状，默认是方形,可为方形、圆形、线性
+        mLegend.setForm(Legend.LegendForm.CIRCLE);
+        mLegend.setXEntrySpace(10f);//设置距离饼图的距离，防止与饼图重合
+        mLegend.setYEntrySpace(0f);
+        mLegend.setYOffset(2f);
+        mLegend.setTextSize(12f);
+//        //设置比例块换行...
+        mLegend.setWordWrapEnabled(true);
 
         // 设置一个选中区域监听
 //        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
@@ -239,8 +240,13 @@ public class MPChartUtils {
          * （可以有第三个参数，表示携带的数据object）这里没用到
          */
         ArrayList<PieEntry> valueList = new ArrayList<>();
+        int total = 0;
         for (PieChartBean bean: dateValueList) {
-            valueList.add(new PieEntry(bean.getMoney(), bean.getDate()));
+            total+=bean.getMoney();
+        }
+        for (PieChartBean bean: dateValueList) {
+            double div = ArithUtii.div(bean.getMoney(), total)*100;
+            valueList.add(new PieEntry(bean.getMoney(), bean.getDate()+"\n "+div+"%"));
         }
 
         //显示在比例图上
@@ -252,7 +258,7 @@ public class MPChartUtils {
 
 //数据连接线距图形片内部边界的距离，为百分数(0~100f)
         dataSet.setValueLinePart1OffsetPercentage(100f);
-        dataSet.setValueLinePart1Length(0.7f);//设置连接线的长度
+        dataSet.setValueLinePart1Length(0.4f);//设置连接线的长度
         dataSet.setValueLinePart2Length(0.2f);
         dataSet.setHighlightEnabled(true);
 //x,y值在圆外显示(在圆外才会有连接线)
@@ -260,7 +266,6 @@ public class MPChartUtils {
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 //设置x,y在圆外显示的值为透明(transparent = 0x00000000)
         dataSet.setValueLineColor(0xff000000);  //设置指示线条颜色,必须设置成这样，才能和饼图区域颜色一致
-
 
         // 设置饼图各个区域颜色
 //        ArrayList<Integer> colors = new ArrayList<>();
@@ -277,20 +282,19 @@ public class MPChartUtils {
         //是否在唉图标上显示值
         data.setDrawValues(false);
 //        //区域文字的大小
-//        data.setValueTextSize(11f);
+//        data.setValueTextSize(8f);
 //        //设置区域文字的颜色
 //        data.setValueTextColor(Color.WHITE);
 //        //设置区域文字的字体
 //        data.setValueTypeface(Typeface.DEFAULT);
-
+//
         pieChart.setData(data);
 
 //        //设置是否显示区域文字内容
 //        pieChart.setDrawSliceText(false);
 //        //设置是否显示区域百分比的值
 //        for (IDataSet<?> set : pieChart.getData().getDataSets()){
-//            set.setDrawValues(true);
-////            set.setDrawValues(!set.isDrawValuesEnabled());
+//            set.setDrawValues(!set.isDrawValuesEnabled());
 //        }
         // undo all highlights
         pieChart.highlightValues(null);

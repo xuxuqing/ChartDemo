@@ -1,6 +1,7 @@
 package demo.api.tps550.telpo.com.mywebviewapplication;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -137,9 +138,9 @@ public class BarChartActivity extends AppCompatActivity {
         lineChartManager1.addLine(shanghai, "上证指数", getResources().getColor(R.color.orange));
         lineChartManager1.addLine(shenzheng, "深证指数", getResources().getColor(R.color.green));
         lineChartManager1.addLine( GEM, "创业指数", getResources().getColor(R.color.colorAccent));
-        //设置曲线填充色 以及 MarkerView
-//        Drawable drawable = getResources().getDrawable(R.drawable.fade_blue);
-//        lineChartManager1.setChartFillDrawable(drawable);
+//        设置曲线填充色 以及 MarkerView
+        Drawable drawable = getResources().getDrawable(R.drawable.index_head_bg);
+        lineChartManager1.setChartFillDrawable(drawable);
         lineChartManager1.setMarkerView(this);
     }
 }
